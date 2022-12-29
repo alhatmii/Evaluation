@@ -1,6 +1,9 @@
 package Evaluation;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -55,8 +58,65 @@ public class Evaluation {
 			
 			
 			else if (choice == 3) {
-				
-			}
+//					Creation of File Descriptor for input file
+//					File SearchWord = new File("History Inputs.txt"); 
+
+					File SearchWord = new File("C:\\Users\\Lenovo\\eclipse-workspace\\Evaluation");
+
+//					Intialize the word Array
+					String[] Files = null;
+
+//				    Creation of File Reader object
+					FileReader fr = new FileReader(SearchWord);
+
+//					Creation of BufferedReader object
+					BufferedReader br = new BufferedReader(fr);
+
+					String s;
+
+					System.out.println("Please Enter the word you want to search:");
+//				    Input word to be searched
+					String WordInput = sc.next();
+
+//				    Intialize the word to zero
+					int count = 0;
+
+//				    Reading Content from the file
+					while ((s = br.readLine()) != null) {
+
+//				   	Split the word using space
+						Files = s.split(" ");
+
+//				 	Search for the given word
+						for (String word : Files) {
+							if (word.equalsIgnoreCase(WordInput)) {
+								count++;
+							}
+						}
+					}
+
+//				    Check for count not equal to zero
+					if (count != 0) {
+						System.out.println("\n");
+						System.out.println("--------------------------------------------------");
+						System.out.println(
+								"The given word |" + WordInput + "| is present for (" + count + ") Times in the file");
+						System.out.println("--------------------------------------------------");
+						System.out.println("\n");
+
+					} else {
+						System.out.println("\n");
+						System.out.println("--------------------------------------------------");
+						System.out.println("The given word is not present in the file");
+						System.out.println("--------------------------------------------------");
+						System.out.println("\n");
+
+					}
+
+					fr.close();
+				}
+	
+		
 			
 			
 //			 Exiting the menu:
