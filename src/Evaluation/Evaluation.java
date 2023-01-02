@@ -1,9 +1,6 @@
 package Evaluation;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -56,6 +53,7 @@ public class Evaluation {
 
 			else if (choice == 2) {
 				try {
+				
 					// Create PdfReader instance.
 					PdfReader pdfReader = new PdfReader(
 							"C:\\Users\\Lenovo\\eclipse-workspace\\Evaluation\\0 Evaluation.pdf");
@@ -63,13 +61,16 @@ public class Evaluation {
 					// Get the number of pages in pdf.
 					int pages = pdfReader.getNumberOfPages();
 
+					
 					// Iterate the pdf through pages.
 					for (int i = 1; i <= pages; i++) {
 						// Extract the page content using PdfTextExtractor.
 						String pageContent = PdfTextExtractor.getTextFromPage(pdfReader, i);
 
+						System.out.println("\n");
 						// Print the page content on console.
 						System.out.println("Content on Page " + i + ": " + pageContent);
+						System.out.println("\n");
 					}
 
 					// Close the PdfReader.
